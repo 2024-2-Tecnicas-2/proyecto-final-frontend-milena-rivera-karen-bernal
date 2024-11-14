@@ -62,13 +62,13 @@ def main():
     # Autenticación con Spotify
     sp = authenticate_spotify()
     if not sp:
-        return # Si la autenticación falla, no continúa
+        return
  
     # Configuración de la ventana principal
     root = tk.Tk()
     root.title("Spotify Playlist Interface")
-    root.geometry("800x600") # Tamaño más grande para mejor visualización
-    root.configure(bg="black") # Fondo negro para la ventana principal
+    root.geometry("800x600") 
+    root.configure(bg="black") 
  
     global frame_left
     frame_left = tk.Frame(root, bg="black")
@@ -86,4 +86,3 @@ def main():
  
 si __nombre__ == "__principal__":
     principal()
-    
