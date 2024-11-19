@@ -1,0 +1,92 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background color for the page */
+body {
+    background-color: #1db954; /* Spotify green */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Centering the login container */
+.login-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/* Logo container (adjust the size and margin) */
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Styling the title */
+h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Styling the description paragraph */
+p {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Styling the login button */
+.login-btn {
+    display: inline-block;
+    background-color: #1db954; /* Spotify green */
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #1ed760; /* Lighter green for hover effect */
+}
+
+/* Optional: Add media query for responsive design */
+@media (max-width: 600px) {
+    .login-container {
+        width: 80%;
+    }
+
+    .logo {
+        width: 120px; /* Smaller logo for mobile */
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .login-btn {
+        padding: 10px 20px;
+    }
+}

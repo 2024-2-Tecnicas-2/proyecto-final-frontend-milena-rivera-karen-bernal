@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones de Spotify</title>
+    <!-- Vinculando el archivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido, {{ user_info['display_name'] }}</h1>
+        
+        <!-- Imagen de perfil con validación -->
+        {% if user_info['images'] and user_info['images'][0] %}
+            <img src="{{ user_info['images'][0]['url'] }}" alt="Imagen de perfil" width="150">
+        {% else %}
+            <p>Sin imagen de perfil disponible.</p>
+        {% endif %}
+
+        <h2>Top Tracks:</h2>
+        <ul>
+            {% for track in recommendations %}
+                <li>
+                    {{ track['name'] }} - 
+                    {% if track['artists'] and track['artists'][0] %}
+                        {{ track['artists'][0]['name'] }}
+                    {% else %}
+                        Artista desconocido
+                    {% endif %}
+                </li>
+            {% else %}
+                <li>No se encontraron pistas principales.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Recomendaciones basadas en tus artistas:</h2>
+        <div class="recommendations">
+            <ul>
+                {% for track in artist_recommendations %}
+                    <li class="recommendation-item">
+                        <!-- Imagen del álbum con validación -->
+                        {% if track['album']['images'] and track['album']['images'][0] %}
+                            <img src="{{ track['album']['images'][0]['url'] }}" alt="Album cover">
+                        {% else %}
+                            <p>Sin imagen de álbum disponible.</p>
+                        {% endif %}
+                        <p>{{ track['name'] }}</p>
+                        <p>
+                            {% if track['artists'] and track['artists'][0] %}
+                                {{ track['artists'][0]['name'] }}
+                            {% else %}
+                                Artista desconocido
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if track['album'] and track['album']['name'] %}
+                                Album: {{ track['album']['name'] }}
+                            {% else %}
+                                Sin información de álbum
+                            {% endif %}
+                        </p>
+                    </li>
+                {% else %}
+                    <p>No se encontraron recomendaciones basadas en tus artistas.</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <footer>
+            <p>Si no ves música, puede ser que no hayas escuchado nada aún.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
